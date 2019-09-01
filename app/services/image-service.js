@@ -5,7 +5,14 @@ const imgApi = axios.create({
 });
 
 
-//TODO create methods to retrieve data trigger the update window when it is complete
+//NOTE  create methods to retrieve data trigger the update window when it is complete
 export default class ImageService {
+
+	getImgApi(draw) {
+		imgApi.get()
+			.then(res => {
+				draw(res.data.url)
+			})
+	}
 
 }

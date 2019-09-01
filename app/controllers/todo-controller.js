@@ -2,8 +2,22 @@ import TodoService from "../services/todo-service.js";
 
 const _todoService = new TodoService()
 
-//TODO Create the render function
+//NOTE  Create the render function
 function _drawTodos() {
+	let todo = _todoService.Todo
+	let template = `<div> <h5>${todo.length} things in your todo list</h5> </div><hr>`
+
+
+
+
+	todo.forEach(t => {
+		let complete = ""
+		if (t.completed == true) { complete = 'checked' }
+		template += `<div><h5><input type="checkbox" name="todo-check" value="todo" onclick="app.controllers.todoController.toggleTodoStatus('${t._id}')" ${complete}> ${t.description}</h5><button class="btn btn-danger" onclick="app.controllers.todoController.removeTodo('${t._id}')" >delete</button></div>`
+	})
+
+
+	document.getElementById("todos").innerHTML = template
 
 }
 
@@ -12,11 +26,11 @@ function _drawError() {
 	console.error('[TODO ERROR]', _todoService.TodoError)
 }
 
-
 export default class TodoController {
 	constructor() {
-		//TODO Remember to register your subscribers
+		//NOTE  Remember to register your subscribers
 		_todoService.addSubscriber('error', _drawError)
+		_todoService.addSubscriber('todos', _drawTodos)
 		_todoService.getTodos()
 	}
 
@@ -24,7 +38,8 @@ export default class TodoController {
 		e.preventDefault()
 		var form = e.target
 		var todo = {
-			//TODO build the todo object from the data that comes into this method
+			//NOTE  build the todo object from the data that comes into this method
+			description: form.description.value
 		}
 		_todoService.addTodo(todo)
 	}
