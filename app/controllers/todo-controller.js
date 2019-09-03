@@ -7,7 +7,7 @@ function _drawTodos() {
 	let todo = _todoService.Todo
 	let s = "s"
 	if (todo.length == 1) { s = "" }
-	let template = `<div> <h4>${todo.length} thing${s} in your todo list</h4><br><br></div>`
+	let template = `<div><h4>${todo.length} thing${s} in your todo list</h4><br><br></div>`
 	todo.forEach(t => {
 		let complete = ""
 		if (t.completed == true) { complete = 'checked' }
