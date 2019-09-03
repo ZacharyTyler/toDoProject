@@ -11,7 +11,7 @@ function _drawImage(url) {
 
 export default class ImageController {
   constructor() {
-    // _is.getImgApi(_drawImage)
+    _is.getImgApi(_drawImage)
   }
 
 }

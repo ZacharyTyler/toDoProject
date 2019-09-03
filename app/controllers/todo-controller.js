@@ -5,11 +5,9 @@ const _todoService = new TodoService()
 //NOTE  Create the render function
 function _drawTodos() {
 	let todo = _todoService.Todo
-	let template = `<div> <h5>${todo.length} things in your todo list</h5> </div><hr>`
-
-
-
-
+	let s = "s"
+	if (todo.length == 1) { s = "" }
+	let template = `<div> <h4>${todo.length} thing${s} in your todo list</h4><br><br></div>`
 	todo.forEach(t => {
 		let complete = ""
 		if (t.completed == true) { complete = 'checked' }

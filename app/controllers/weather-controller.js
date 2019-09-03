@@ -9,8 +9,8 @@ var _weatherService = new WeatherService()
 //NOTE Complete rendering data to the screen
 function drawWeather() {
 	console.log("THE WEATHER MAN SAYS:", _weatherService.Weather)
-	document.getElementById('weather').innerHTML = `<div><h3>${_weatherService.Weather.kelvin}°
- F</h3></div>`
+	document.getElementById('weather').innerHTML = `<div><h1>${_weatherService.Weather.kelvin}°
+ F</h1></div>`
 }
 
 export default class WeatherController {
